@@ -18,6 +18,7 @@ section .data
     sys_dup2    equ 0x3f
 
     AF_INET equ 2
+    
     sin:
     istruc sockaddr_in
         at sockaddr_in.family, dw AF_INET
